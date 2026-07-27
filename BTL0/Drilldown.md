@@ -12,6 +12,6 @@ Splunk , Virustotal
 
 Since this is an outbound connections I began by searching for Sysmon EventCodes=3 which list external connections
 
-**index=* EventCode=3 source="WinEventLog:Microsoft-Windows-Sysmon/Operational"**
+ __index=* EventCode=3 source="WinEventLog:Microsoft-Windows-Sysmon/Operational"__
 <img width="1918" height="631" alt="image" src="https://github.com/user-attachments/assets/5257c615-91a0-4256-96bd-cc8c8c8354a5" />
 So it is confirmed that we have Network connection logs. To remove the noise, we filtered for EC2 instances specifically.

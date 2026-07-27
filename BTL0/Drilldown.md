@@ -19,5 +19,5 @@ So it is confirmed that we have Network connection logs. To remove the noise, we
 <img width="1376" height="537" alt="image" src="https://github.com/user-attachments/assets/0d4c73ae-43be-4119-9a9e-0f4a80942103" />
 
 So as we can see here there is a connection to 3 different EC2 instances 
-Q1 / 3
 
+#### Question 1 / 3

@@ -50,6 +50,53 @@ Q5 :  What time was this connection event? Use TimeCreated SystemTime (Format: Y
 Using the same event I found systemtime which I tried and turned out be the correct answer
 <img width="910" height="347" alt="image" src="https://github.com/user-attachments/assets/5cf89b14-dcb9-471d-b71f-3a33fc73c8cb" />
 
+Q6 : What is the destination hostname and IP address of the AWS EC2 instance? (Format: Hostname, X.X.X.X)
+
+Another easy question we can find the destination hostname and IP address using the same event 
+<img width="1000" height="347" alt="image" src="https://github.com/user-attachments/assets/ea5e73a8-4292-4f4c-b8ce-baff5b9f0da0" />
+<img width="925" height="222" alt="image" src="https://github.com/user-attachments/assets/cd232fa8-0a65-4dde-9cd2-0c50536a7c10" />
+
+#### Question 6 / ec2-23-22-63-114.compute-1.amazonaws.com, 23.22.63.114
+
+Q7 : Utilize Sysmon logs to find the SHA256 hash of the executable making this connection. What is the hash value? (Format: SHA256 Hash) 
+
+For finding the hash value I used sysmon event 1 which process creation as it records every information for any executable created 
+<img width="781" height="214" alt="image" src="https://github.com/user-attachments/assets/eb2a887a-1f5f-4b45-a98d-d0ea580bcb03" />
+
+#### Question 7 / EC78C938D8453739CA2A370B9C275971EC46CAF6E479DE2B2D04E97CC47FA45D
+
+Q8:  Search this hash online to find more about its reputation. On the Behaviour tab look at the results for Microsoft Sysinternals. What two IPv4 addresses are listed, that begin with 23.216.? (Format: X.X.X.X, X.X.X.X)  
+
+We used VirusTotal to look up the reputation of the SHA256 hash On the "Behavior" tab VirusTotal shows results from multiple sandbox engines that each independently executed the file. Under the "Microsoft Sysinternals" section specifically, two IPv4 addresses in the 23.216.x.x range were observed being contacted by the malware during sandbox execution.
+
+<img width="551" height="448" alt="image" src="https://github.com/user-attachments/assets/e72107bf-0c99-4e9d-9c51-17633500029f" />
+
+#### Question 8 / 23.216.147.64, 23.216.147.76
+
+Q9: Using these two gathered IPs, check to see if there is any activity from them in Splunk, which there might not be! What is the number of events per IP where the address is mentioned ANYWHERE in a log? (Format: IP1EventCount, IP2EventCount)
+
+I searched for the both the IP addresses but there was no result found so it turned out that there was no connection to this two IP addressess from the affected hostnames
+
+#### Question 9 / 0, 0
+
+Q10 : At what time was this file uploaded to the web server? (Use 'timestamp' value) (Format: YYYY-MM-DDTHH:MM:SS) (4 points)
+
+This one confused me a bit at first. I searched through the HTTP logs and found a POST request event related to 3791.exe. I assumed this was the log entry recording the file being uploaded to the server, so I checked its timestamp value and submitted that as the answer.
+
+<img width="1622" height="316" alt="image" src="https://github.com/user-attachments/assets/f59a43ba-3f5d-4ceb-99c3-c3492f13b4a9" />
+
+#### Question 10 / 2016-08-10T21:52:45
+
+
+
+
+
+
+
+
+
+
+
 
 
 

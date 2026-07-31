@@ -87,14 +87,42 @@ This one confused me a bit at first. I searched through the HTTP logs and found 
 
 #### Question 10 / 2016-08-10T21:52:45
 
+Q11 : What user-agent was used to upload the file? (Format: Full User-Agent) 
+
+For question 11 to 13 we can get all the answers from the same post request in Question 10
+
+#### Question 11 / : Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko
+
+#### Question 12 / : /joomla/administrator/index.php
+
+#### Question 13 / : 40.80.148.42
+
+Q14 : We need to understand if any of our network defenses have detected this activity, or if we're completely blind. Use one of the retrieved indicators to search the logs to see if anything has flagged this file as being malicious. Provide any timestamp retrieved from a relevant log to show evidence of some kind of alert or notification (Format: YYYY-MM-DD HH:MM:SS)
+
+This question is asking whether our security tools actually caught this activity. Looking back at the sourcetypes available in Splunk, I noticed "suricata" . So I searched suricata logs for the executable filename 
+<img width="934" height="757" alt="image" src="https://github.com/user-attachments/assets/6aac2cf4-8774-4b0a-9edb-a299cd9397aa" />
+So we can see the timestamp here and we got our answer
+
+#### Question 14 / : 2016-08-10 15:52:45
+
+### Here is a quick summary of how the attack occurs
+- First the attacker targeted WayneCorpInc's public-facing web server which was hosting a joomla website
+- The attacker target a vulnerability in the website which them to upload 3791.exe into the website directory C:\inetpub\wwwroot\joomla\
+- Then the 3791 was exectued in the website and start making outboned connections to AWS EC2 which a major flag since WayneCorpInc doesn't use AWS at all
 
 
+## Mitre Attack Mapping
+ Tactic - Initial Access 
+ Technique -  Exploit Public-Facing Application
+ T1190
 
+ Tactic - Command and Control
+ Technique - Web Service (using AWS EC2 as C2 infrastructure)
+ T1102
 
+ 
 
-
-
-
+Feel free to check out my other investigations in this repository, and connect with me on [LinkedIn](https://www.linkedin.com/in/mohd-mutasem-356346250/) if you have any  feedback or questions.
 
 
 

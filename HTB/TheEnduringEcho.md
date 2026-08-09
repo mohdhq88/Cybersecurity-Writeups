@@ -32,14 +32,14 @@ So I thought filtering for this pattern and went to find the earliest log and as
 <img width="1426" height="170" alt="image" src="https://github.com/user-attachments/assets/64459e20-41fb-4653-b299-31d5d7cb2275" />
 
 Q1 / Systeminfo
-<img width="1095" height="116" alt="image" src="https://github.com/user-attachments/assets/f3f27b54-8e2b-4133-8ee8-1bbe5f87dada" />
+
+
 
 Q2 / Which parent process (full path) spawned the attacker’s commands?
 We can find the parent process in the same log that we got for the previous question 
 <img width="1430" height="183" alt="image" src="https://github.com/user-attachments/assets/bf709ddf-9e4f-47ba-b1f5-6a56bef120b9" />
 
 Q2 / C:\Windows\System32\wbem\WmiPrvSE.exe
-<img width="1101" height="162" alt="image" src="https://github.com/user-attachments/assets/655b6d83-7b4e-4e62-a589-185a01525366" />
 
 
 

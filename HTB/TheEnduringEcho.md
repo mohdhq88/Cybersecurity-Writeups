@@ -31,8 +31,7 @@ So I thought filtering for this pattern and went to find the earliest log and as
 <img width="809" height="91" alt="image" src="https://github.com/user-attachments/assets/d52e1317-14f4-4daa-be4e-cefaf448422d" />
 <img width="1426" height="170" alt="image" src="https://github.com/user-attachments/assets/64459e20-41fb-4653-b299-31d5d7cb2275" />
 
-Q1 / Systeminfo
-
+**Answer:** `systeminfo`
 
 
 Q2 / Which parent process (full path) spawned the attacker’s commands?

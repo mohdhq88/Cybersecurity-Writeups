@@ -40,8 +40,7 @@ Q2 / Which parent process (full path) spawned the attacker’s commands?
 We can find the parent process in the same log that we got for the previous question 
 <img width="1430" height="183" alt="image" src="https://github.com/user-attachments/assets/bf709ddf-9e4f-47ba-b1f5-6a56bef120b9" />
 
-Q2 / C:\Windows\System32\wbem\WmiPrvSE.exe
-
+**Answer:** `C:\Windows\System32\wbem\WmiPrvSE.exe`
 
 
 

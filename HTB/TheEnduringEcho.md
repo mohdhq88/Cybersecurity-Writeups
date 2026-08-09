@@ -33,6 +33,8 @@ So I thought filtering for this pattern and went to find the earliest log and as
 
 **Answer:** `systeminfo`
 
+----
+
 
 Q2 / Which parent process (full path) spawned the attacker’s commands?
 We can find the parent process in the same log that we got for the previous question 

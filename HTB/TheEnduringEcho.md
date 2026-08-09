@@ -7,7 +7,7 @@ Zimmerman Tools
 
 Splunk
 
-# Investigation
+## Investigation
 
 Q1/ What was the first (non cd) command executed by the attacker on the host?
 

@@ -16,7 +16,7 @@ As it mention initial access it means we are looking for a phishing-kind of atta
 I filtered for dns query to check which website the user visited and at the same get the IP for the website .
 as we filtered for dns here we can see a malicious website and it has the IP 62.173.142.148 which the answer we want
 
-Q1 / 62.173.142.148
+**Answer:** `62.173.142.148`
 
 ---
 

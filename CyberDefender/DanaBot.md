@@ -22,8 +22,10 @@ as we filtered for dns here we can see a malicious website and it has the IP 62.
 
 ### Q2 What is the name of the malicious file used for initial access?
 
-We can switch to filter for dns as it we will show the files transfered between the victim and attacker 
+We can switch to filter for dns as it we will show the files transfered between the victim and attacker , Here, we can see the victim requested login.php
+from the server.
 ![[Pasted image 20260812214612.png]]
-As we can see the user requested the login.php so I followed the http stream and I found a malious attachment
+
+
 <img width="1149" height="366" alt="image" src="https://github.com/user-attachments/assets/27eec81e-78ec-418a-ab08-2a7acf3422c2" />
 

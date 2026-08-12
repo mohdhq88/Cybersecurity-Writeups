@@ -27,5 +27,6 @@ from the server.
 ![[Pasted image 20260812214612.png]]
 
 
+
 <img width="1149" height="366" alt="image" src="https://github.com/user-attachments/assets/27eec81e-78ec-418a-ab08-2a7acf3422c2" />
 

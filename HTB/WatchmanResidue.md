@@ -20,7 +20,8 @@ I started by opening the packet capture in Wireshark and filtering on `http` to 
 
 From this, I identified `172.18.0.2` as the AI helpdesk bot's backend — it was serving the actual web app content. I then scrolled through the capture to look for any other IPs communicating with the bot across different sessions.
 
-<img width="1912" height="622" alt="image" src="https://github.com/user-attachments/assets/64aea0f3-20f3-497a-a227-0cd0c040a4cd" />
+<img width="1136" height="106" alt="image" src="https://github.com/user-attachments/assets/a9791fda-adb7-4fa4-ac8b-919b92288b0a" />
+
 
 We can see anomalous packets from a new IP that appears to be entering the website for the first time, which is suspicious, so I tried it and it turned out to be our answer."
 

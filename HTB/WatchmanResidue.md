@@ -27,5 +27,21 @@ We can see anomalous packets from a new IP that appears to be entering the websi
 
 **Answer:** `10.0.69.45`
 
+---
+
+Q2 / What was the hostname of the decommissioned machine?
+
+To find the hostname, I used NBNS. I first tried DNS, but there were no records for 10.0.69.45 — I think this is because it's a decommissioned machine, so it likely wouldn't have an active DNS entry anymore.
+
+<img width="1919" height="174" alt="image" src="https://github.com/user-attachments/assets/1e374647-f5ab-4ce1-906b-2dee01ebcde7" />
+
+As we can see here we found it 
+
+**Answer:** `WATSON-ALPHA-2`
+
+---
+
+Q3 /
+
 
 

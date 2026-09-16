@@ -41,7 +41,46 @@ As we can see here we found it
 
 ---
 
-Q3 /
+Q3 /  What was the first message the attacker sent to the AI chatbot?
 
+I went back and filtered for HTTP packets to check the messages being sent to the chatbot.
+<img width="1919" height="746" alt="image" src="https://github.com/user-attachments/assets/16c5a2d4-5166-4a02-9bcf-3ba26e4f8bad" />
+
+I then right-clicked the first POST request from the attacker's machine  and followed the HTTP stream to read the actual message content.
+<img width="1248" height="1001" alt="image" src="https://github.com/user-attachments/assets/206c55d8-9a31-4056-8a34-a1411b8fc8c9" />
+
+I found it and it was "Hello Old Friend"
+
+**Answer:** `Hello Old Friend`
+
+---
+
+Q4 / When did the attacker's prompt injection attack make MSP-HELPDESK-AI leak remote management tool info?
+
+This one confused me a bit , I figured it out by searching through the POST packets where each packets shows a part of the conversation until I found the one we need
+
+<img width="1919" height="919" alt="image" src="https://github.com/user-attachments/assets/7dffb7e8-645c-48fe-91e2-7253451df0f7" />
+
+**Answer:** `2025-08-19 12:02:06`
+
+---
+
+Q5 / What is the Remote management tool Device ID and password?
+
+This one is already revealed in the previous question 
+
+![[Pasted image 20260829082308.png]]
+
+**Answer:** `565963039:CogWork_Central_97&65`
+
+---
+
+Q6 / 
+
+
+
+
+
+ 
 
 

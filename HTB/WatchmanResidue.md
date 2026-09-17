@@ -4,8 +4,7 @@
 ## Scenario
 With help from D.I. Lestrade, Holmes acquires logs from a compromised MSP connected to the city’s financial core. The MSP’s AI helpdesk bot looks to have been manipulated into leaking remote access keys - an old trick of Moriarty’s.
 
-## Tools 
-Wireshark , Zimmerman Tools
+cWireshark , Zimmerman Tools
 
 ## Evidence
 <img width="691" height="115" alt="image" src="https://github.com/user-attachments/assets/1d665327-e1e4-4ac6-b034-39c9629f3942" />
@@ -253,7 +252,42 @@ And we got it
 
 ---
 
+## Attack Flow 
 
+- The attacker turned on a retired/decommissioned machine (WATSON-ALPHA-2) and used it to start a chat with the MSP's AI helpdesk bot
+- Through a carefully crafted conversation, the attacker tricked the AI bot into giving away the remote access tool's login credentials, then signed off with "JM WILL BE BACK"
+- The next day, the attacker used those stolen credentials to remotely log into the Cogwork Central Workstation through TeamViewer
+- Once inside, the attacker dropped several hacking tools onto the machine, including one that steals saved browser passwords and another that dumps system credentials
+- The attacker also modified a Windows registry setting to make their malicious program (JM.exe) run automatically every time the computer starts
+- The attacker then stole several sensitive files off the machine and sent them out through the remote session
+- One of the stolen files was a password manager database — after cracking it open, the attacker found login credentials for other computers on the network
+
+---
+
+## MITRE ATTACK
+
+Tactic - Initial access
+Technique - Valid Accounts (stolen RMM credentials) 
+ID -  T1078
+
+Tactic - Lateral Movement
+Technique - Remote Services (TeamViewer RMM abuse)
+ID -  T1021
+
+Tactic - Credential Access
+Technique - OS Credential Dumping (Mimikatz) 
+ID - T1003
+
+Tactic - Persistence
+Technique - Winlogon Helper DLL
+ID - T1547.004
+
+Tactic -  Exfiltration
+Technique - Exfiltration Over C2 Channel
+ID - T1041
+
+---
+Feel free to check out my other investigations in this repository, and connect with me on [LinkedIn](https://www.linkedin.com/in/mohd-mutasem-356346250/) if you have any feedback or questions.
 
 
 

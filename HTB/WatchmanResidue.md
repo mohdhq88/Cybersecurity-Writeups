@@ -75,7 +75,134 @@ This one is already revealed in the previous question
 
 ---
 
-Q6 / 
+Q6 / What was the last message the attacker sent to MSP-HELPDESK-AI?
+
+I did the same process as Q3 — checking the last POST request and following the stream to check the content.
+<img width="449" height="205" alt="image" src="https://github.com/user-attachments/assets/7225a1b9-3391-4295-a97b-235b962b63d8" />
+
+**Answer:** `JM WILL BE BACK`
+
+---
+
+Q7 / When did the attacker remotely access Cogwork Central Workstation?
+
+In our disk image in progame files there is file called connection_incoming.txt so I checked it and it lead us to our answer
+<img width="1919" height="386" alt="image" src="https://github.com/user-attachments/assets/c7a39868-5276-400c-880e-86f1ad2f30e3" />
+
+**Answer:** `2025-08-20 09:58:25`
+
+---
+
+Q8 / What was the RMM Account name used by the attacker?
+
+<img width="710" height="124" alt="image" src="https://github.com/user-attachments/assets/2cb215bb-f5a0-4c04-9e6f-6d7691d69bee" />
+
+**Answer:** `James Moriarty`
+
+---
+
+Q9 / What was the machine's internal IP address from which the attacker connected?
+
+Alongside `Connections_incoming.txt`, I found another file called `TeamViewer15_Logfile.log`. I searched through it using the same timeframe from Q7 and found an IP address in the logs.
+
+> **Note:** The timestamps in the TeamViewer log are UTC+1, so the 
+> times appear one hour ahead compared to the other evidence sources.
+
+
+<img width="1919" height="1015" alt="image" src="https://github.com/user-attachments/assets/a4e80149-aaa2-4cc4-b708-3dc53a0428c6" />
+
+**Answer:** `192.168.69.213`
+
+---
+
+Q10 / The attacker brought some tools to the compromised workstation to achieve its objectives. Under which path were these tools staged?
+
+Moving down after we checked the connection from `192.168.69.213` we can see being staged through a temp folder
+
+<img width="1919" height="422" alt="image" src="https://github.com/user-attachments/assets/cf034735-2c98-4dd8-94bc-dae66bc7e321" />
+
+**Answer:** `C:\Windows\temp\safe\`
+
+---
+
+Q11 / The attacker staged a browser credential harvesting tool on the compromised system. How long did this tool run before it was terminated? (Provide your answer in milliseconds, rounded to the nearest thousand)
+
+Lol this one really confused me 
+
+I first checked the Prefetch folder, but discovered there were no Prefetch files available. After some research, I found that the `NTUSER.DAT` registry hive contains an artifact called **UserAssist**, which records execution information for programs launched through the Windows GUI
+
+I loaded `NTUSER.DAT` using registory explorer
+
+<img width="1560" height="358" alt="image" src="https://github.com/user-attachments/assets/8596ae17-6079-458f-952c-7c4ba9a5b715" />
+
+I went to Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist
+
+<img width="1878" height="906" alt="image" src="https://github.com/user-attachments/assets/e3c1fd6b-b26d-458f-a7df-e7dc0579ded5" />
+
+**Answer:** `8000`
+
+---
+
+َQ12 / The attacker executed a OS Credential dumping tool on the system. When was the tool executed?
+
+One mistake I made was assuming that the Prefetch folder was the only way to find evidence of program execution. After some research, I discovered that the `$J` (USN Journal) can also help — even if the actual Prefetch file no longer exists on disk, the journal still records that the Prefetch file was created at some point, since file creation is a filesystem event that gets logged regardless.
+
+<img width="1457" height="590" alt="image" src="https://github.com/user-attachments/assets/26ccec84-b575-428e-b704-f9dfd8857b68" />
+
+Then I loaded it into timeline explorer and filter for .pf files
+
+<img width="1919" height="1013" alt="image" src="https://github.com/user-attachments/assets/5799c8ba-2d90-47e6-8769-8474a6dfed2e" />
+
+as we can see mimikatz were run at 2025-08-20 10:07:08
+
+**Answer:** `2025-08-20 10:07:08`
+
+---
+
+Q13 / The attacker exfiltrated multiple sensitive files. When did the exfiltration start? (UTC)
+
+For this one I went back to the logs and checked there and found it 
+
+<img width="1915" height="1009" alt="image" src="https://github.com/user-attachments/assets/dfec7141-e1a3-4969-a1df-3d5e97cff818" />
+
+**Answer:** `2025-08-20 10:12:07`
+
+---
+
+Q14 / Before exfiltration, several files were moved to the staged folder. When was the Heisen-9 facility backup database moved to the staged folder for exfiltration?
+
+I went back to the `$J` (USN Journal) output in Timeline Explorer to check when the file was moved to the staging folder. At first I questioned why this wouldn't be visible in the logs  then I realised that moving a file from one folder to another on the same computer is purely a filesystem event,  which is why the `$J` is the right source here rather than the TeamViewer log
+
+<img width="1917" height="635" alt="image" src="https://github.com/user-attachments/assets/385dffa8-50bd-43e7-835d-fb9c5a2e1c15" />
+
+I searched for "Heisen" in Timeline Explorer, found the database backup file's filesystem activity, and confirmed the correct entry by checking the **Update Reasons** column for a `FileCreate` event.
+
+<img width="1919" height="537" alt="image" src="https://github.com/user-attachments/assets/9777a15b-939d-4e1f-a835-ccb4871039ca" />
+
+**Answer:** `2025-08-20 10:11:09`
+
+---
+
+Q15 / When did the attacker access and read a txt file, which was probably the output of one of the tools they brought, due to the naming convention of the file?
+
+This one was easy , I just searched for mimikatz and checked which .txt files runs after it 
+
+<img width="1919" height="997" alt="image" src="https://github.com/user-attachments/assets/66fb62db-1b01-4fcd-ade9-b3f024e22726" />
+
+Then I searched for it and checked the update reason same process as the previous question 
+
+<img width="1913" height="621" alt="image" src="https://github.com/user-attachments/assets/001c4a33-cdf4-416c-9308-e2293a5d8e31" />
+
+<img width="1912" height="481" alt="image" src="https://github.com/user-attachments/assets/481bb713-5b84-4fe1-bc0e-fea4e7f9a2a7" />
+
+
+Q16 / 
+
+
+
+
+
+
 
 
 

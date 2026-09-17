@@ -195,8 +195,63 @@ Then I searched for it and checked the update reason same process as the previou
 
 <img width="1912" height="481" alt="image" src="https://github.com/user-attachments/assets/481bb713-5b84-4fe1-bc0e-fea4e7f9a2a7" />
 
+**Answer:** `2025-08-20 10:08:06`
 
-Q16 / 
+
+---
+
+Q16 / The attacker created a persistence mechanism on the workstation. When was the persistence setup?
+
+I started by checking the `Run` key in the SOFTWARE hive, but nothing suspicious was there
+<img width="1886" height="900" alt="image" src="https://github.com/user-attachments/assets/52f8bbba-074c-4053-910d-3eb936d2399e" />
+
+I then checked a less obvious but well-known persistence location —  `Microsoft\Windows NT\CurrentVersion\Winlogon` , and here the attacker appears to modify the userinit value 
+<img width="1879" height="934" alt="image" src="https://github.com/user-attachments/assets/5f40f874-ce77-44d9-b93b-505338552fdc" />
+<img width="753" height="20" alt="image" src="https://github.com/user-attachments/assets/f22eec5c-5bba-4191-b8e6-05732607574d" />
+
+
+**Answer:** `2025-08-20 10:13:57`
+
+---
+
+Q17 / What is the MITRE ID of the persistence subtechnique? 
+
+**Answer:** `T1547.004`
+
+---
+
+Q18 / When did the malicious RMM session end?
+
+This one we can agein the check the first Incoming Connection txt file 
+
+<img width="1919" height="393" alt="image" src="https://github.com/user-attachments/assets/775f51c8-5ad4-481d-972c-80b2a8b2406b" />
+
+
+**Answer:** `2025-08-20 10:14:27`
+
+---
+
+Q19 / The attacker found a password from exfiltrated files, allowing him to move laterally further into CogWork-1 infrastructure. What are the credentials for Heisen-9-WS-6?
+
+For this we need to crack through the database file , First I got the hash for the database file using kee2pass
+
+<img width="1914" height="251" alt="image" src="https://github.com/user-attachments/assets/fcee0d0d-2ff8-4be5-aa2c-87e9d6825d30" />
+
+Then I used john the reaper to crack the hash as we can here 
+
+<img width="877" height="251" alt="image" src="https://github.com/user-attachments/assets/24b4805f-c0b3-4dc9-ab99-0a2f32f3248e" />
+
+The password for the database is cutiepie14
+
+Using this password we can access and get the credinials 
+
+<img width="608" height="764" alt="image" src="https://github.com/user-attachments/assets/3d2d9f85-5a4e-4be5-858d-578b95f4bf16" />
+
+And we got it 
+
+**Answer:** `Werni:Quantum1!`
+
+---
 
 
 

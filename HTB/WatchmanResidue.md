@@ -68,7 +68,8 @@ Q5 / What is the Remote management tool Device ID and password?
 
 This one is already revealed in the previous question 
 
-![[Pasted image 20260829082308.png]]
+<img width="839" height="77" alt="image" src="https://github.com/user-attachments/assets/511f038b-ad7d-4c23-b054-8e61e89ec7e2" />
+
 
 **Answer:** `565963039:CogWork_Central_97&65`
 
